@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  www:
+    build:
+      context: .
+      dockerfile: ./lemp/1804/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3306:3306"
+      - "27017:27017"
+    volumes:
+    - ./www:/var/www/html:rw
+    - ./mysql:/var/lib/mysql:rw
+    environment:
+      DOCKER_OSX: 'true'
+      MYSQL_USER: 'admin'
+      MYSQL_PASS: '123'
+    restart: always
+    stdin_open: true
+    tty: true
